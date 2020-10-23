@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "firebase": "^7.24.0",
     "formik": "^2.1.5",
     "next": "^9.4.4",
+    "postcss-preset-env": "^6.7.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "yup": "^0.29.1"
@@ -10,8 +12,7 @@
     "@tailwindcss/custom-forms": "^0.2.1",
     "@types/node": "^14.0.24",
     "@types/react": "^16.9.43",
-    "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.5.2",
+    "tailwindcss": "^1.9.5",
     "typescript": "^3.9.7"
   },
   "scripts": {
