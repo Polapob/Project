@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import firebase from 'lib/firebase'
 import router from 'next/router'
+
 const Index = () => {
   const [state, setState] = useState<any[]>([])
   useEffect(() => {
     const ret = firebase.firestore().collection('data').onSnapshot((data) => {
       let now = []
       data.forEach((doc) => {
-        now.push(doc.data())
+        let v = doc.data()
+        v.id = doc.id
+        now.push(v)
       })
       setState([...state, ...now])
     })
@@ -15,6 +18,9 @@ const Index = () => {
       ret()
     }
   }, [])
+  const remove = async (id: string) => {
+    await firebase.firestore().doc(`data/${id}`).delete()
+  }
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
       <div className="max-w-3xl mx-auto relative">
@@ -49,6 +55,11 @@ const Index = () => {
                             <span className="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                               longtitude: {data.long}
                             </span>
+                            <span className="inline-flex rounded-md shadow-sm">
+                              <button type="button" onClick={() => remove(data.id)} className="inline-flex items-center px-3 py-2 border border-gray-300 text-xs leading-4 font-medium rounded text-red-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+                                X
+                              </button>
+                            </span>
                           </div>
                         </div>
                         <div className="mt-2 sm:flex sm:justify-between">
@@ -69,7 +80,6 @@ const Index = () => {
                   </li>
                 )
               })}
-              
             </ul>
           </div>
         </div>
