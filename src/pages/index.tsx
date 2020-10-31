@@ -10,7 +10,7 @@ interface Position {
 const initMap = (props: Position, marker: boolean) => {
   if (window.google) {
     const map = new window.google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
+      zoom: 10.5,
       center: props,
     })
     if (marker) {
@@ -67,7 +67,7 @@ const Index = () => {
           </span>
         </div>
         <div className="mt-12 flex flex-col-reverse lg:flex-row lg:justify-around">
-          <div className="bg-white shadow overflow-hidden sm:rounded-md w-map">
+          <div className="bg-white shadow overflow-hidden sm:rounded-md w-full lg:w-map">
             <ul>
               {state.map((data) => {
                 return (
