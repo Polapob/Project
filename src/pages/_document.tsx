@@ -23,6 +23,10 @@ export default class Document extends NextDocument {
             type="font/woff2"
             crossOrigin="true"
           />
+          <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5btCWc1NaPxL1zXc9IztDb-IsRvvxNtg&callback=initMap&libraries=&v=weekly"
+            defer
+          />
         </Head>
         <body>
           <Main />

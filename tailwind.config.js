@@ -22,6 +22,15 @@ module.exports = {
         ...defaultTheme.fontFamily.sans,
       ],
     },
+    height: theme => ({
+      map: '440px',
+      ...defaultTheme.height(theme)
+      
+    }),
+    width: theme => ({
+      map: '440px',
+      ...defaultTheme.width(theme)
+    }),
   },
   variants: {},
   plugins: [
